@@ -391,7 +391,7 @@ void AttitudeEstimatorQ::task_main()
 			math::Quaternion q(_mocap.q);
 			math::Matrix<3, 3> Rmoc = q.to_dcm();
 
-			math::Vector<3> v(1.0f, 0.0f, 0.4f);
+			math::Vector<3> v(0.0f, -1.0f, 0.4f);
 
 			// Rmoc is Rwr (robot respect to world) while v is respect to world.
 			// Hence Rmoc must be transposed having (Rwr)' * Vw

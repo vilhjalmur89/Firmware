@@ -236,6 +236,14 @@ PARAM_DEFINE_FLOAT(LPE_VIS_Z, 0.5f);
 PARAM_DEFINE_INT32(LPE_VIS_ON, 1);
 
 /**
+ * Mocap input enable
+ *
+ * @group Local Position Estimator
+ * @boolean
+ */
+PARAM_DEFINE_INT32(LPE_VIC_ON, 1);
+
+/**
  * Vicon position standard deviation.
  *
  * @group Local Position Estimator

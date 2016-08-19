@@ -277,6 +277,7 @@ private:
 
 	// mocap parameters
 	BlockParamFloat  _mocap_p_stddev;
+	BlockParamInt  _mocap_on;
 
 	// flow parameters
 	BlockParamFloat  _flow_z_offset;

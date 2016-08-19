@@ -74,6 +74,7 @@ BlockLocalPositionEstimator::BlockLocalPositionEstimator() :
 	_vision_z_stddev(this, "VIS_Z"),
 	_vision_on(this, "VIS_ON"),
 	_mocap_p_stddev(this, "VIC_P"),
+	_mocap_on(this, "VIC_ON"),
 	_flow_z_offset(this, "FLW_OFF_Z"),
 	_flow_xy_stddev(this, "FLW_XY"),
 	//_flow_board_x_offs(NULL, "SENS_FLW_XOFF"),
@@ -288,7 +289,7 @@ void BlockLocalPositionEstimator::update()
 	bool baroUpdated = _sub_sensor.updated();
 	bool gpsUpdated = _gps_on.get() && _sub_gps.updated();
 	bool visionUpdated = _vision_on.get() && _sub_vision_pos.updated();
-	bool mocapUpdated = _sub_mocap.updated();
+	bool mocapUpdated = _mocap_on.get() && _sub_mocap.updated();
 	bool lidarUpdated = (_sub_lidar != NULL) && _sub_lidar->updated();
 	bool sonarUpdated = (_sub_sonar != NULL) && _sub_sonar->updated();
 
