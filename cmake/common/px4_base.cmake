@@ -440,51 +440,6 @@ function(px4_generate_messages)
 		)
 	set_source_files_properties(${msg_source_files_out} PROPERTIES GENERATED TRUE)
 
-	# !sources for uRTPS-UART transmission
-	set(msg_source_out_path ${PX4_BINARY_DIR}/topics_sources)
-    set(msg_source_urtps_out)
-    foreach(msg ${msg_list})
-        list(APPEND msg_source_urtps_out ${msg_source_out_path}/${msg}_uRTPS_UART_transmitter.cpp)
-    endforeach()
-    add_custom_command(OUTPUT ${msg_source_urtps_out}
-        COMMAND ${PYTHON_EXECUTABLE}
-            Tools/px_generate_uorb_topic_files.py
-            --UART
-            ${QUIET}
-            -f ${MSG_FILES}
-            -i ${INCLUDES}
-            -o ${msg_source_out_path}
-            -e msg/templates/uorb
-            -t ${PX4_BINARY_DIR}/topics_temporary_sources
-        DEPENDS ${DEPENDS} ${MSG_FILES}
-        WORKING_DIRECTORY ${PX4_SOURCE_DIR}
-        COMMENT "Generating uORB topic uRTPS-UART transmitter sources"
-        VERBATIM
-        )
-
-    # !IDLs for each .msg
-    set(msg_idl_out_path ${PX4_BINARY_DIR}/idl)
-    set(msg_idl_out)
-    foreach(msg ${msg_list})
-        list(APPEND msg_idl_out ${msg_idl_out_path}/${msg}.idl)
-    endforeach()
-    add_custom_command(OUTPUT ${msg_idl_out}
-        COMMAND ${PYTHON_EXECUTABLE}
-            Tools/px_generate_uorb_topic_files.py
-            --idl
-            ${QUIET}
-            -f ${MSG_FILES}
-            -i ${INCLUDES}
-            -o ${msg_idl_out_path}
-            -e msg/templates/urtps
-            -t ${PX4_BINARY_DIR}/topics_temporary_idls
-        DEPENDS ${DEPENDS} ${MSG_FILES}
-        WORKING_DIRECTORY ${PX4_SOURCE_DIR}
-        COMMENT "Generating IDLs from .msg files"
-        VERBATIM
-        )
-
-
 	# We remove uORBTopics.cpp to make sure the generator is re-run, which is
 	# necessary when a .msg file is removed and because uORBTopics.cpp depends
 	# on all topics.
@@ -518,8 +473,6 @@ function(px4_generate_messages)
 
 	px4_add_library(${TARGET}
 		${msg_source_files_out}
-		${msg_source_urtps_out}
-		${msg_idl_out}
 		${msg_multi_files_out}
 		${msg_files_out}
 		)
