@@ -82,7 +82,7 @@ will use the USB port as output. Using */dev/ttyS1* or */dev/ttyS2* will write t
 
 .. code-block:: shell
 
-    > sensor_combined_trans /dev/ttyACM0  #or /dev/ttySn
+    > general_trans /dev/ttyACM0  #or /dev/ttySn
 
 **NOTE**: If the UART port selected is busy, it's possible that Mavlink applications were using them. If it is the case, you can stop Mavlink from NuttShell typing:
 
@@ -149,7 +149,7 @@ Add a publish method to all publisher
 
 .. code-block:: shell
 
-    void vehicle_status_Publisher::publish(vehicle_status_* st)
+    void sensor_combined_Publisher::publish(sensor_combined_* st)
     {
       mp_publisher->write(st);
     }
