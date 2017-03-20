@@ -148,6 +148,7 @@ Add a publish method to all publisher
 -  Add the publish-method to *sensor_combined_Publisher.cxx*
 
 .. code-block:: shell
+
     void vehicle_status_Publisher::publish(vehicle_status_* st)
     {
       mp_publisher->write(st);
