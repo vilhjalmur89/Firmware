@@ -32,7 +32,7 @@
 ############################################################################
 
 px4_add_module(
-	MODULE examples__micrortps_transmitter_generated
+	MODULE examples__micrortps_transmitter
 	MAIN general_trans
 	STACK_MAIN 2000
 	SRCS
@@ -40,5 +40,5 @@ px4_add_module(
 	DEPENDS
 		platforms__common
 	)
-target_link_libraries(examples__micrortps_transmitter_generated lib__micro-CDR)
+target_link_libraries(examples__micrortps_transmitter lib__micro-CDR)
 # vim: set noet ft=cmake fenc=utf-8 ff=unix :
