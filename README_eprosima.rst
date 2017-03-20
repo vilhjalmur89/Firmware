@@ -136,7 +136,7 @@ For create the application:
 
     
 Now we need to do some modifications to use the both codes together.
-Add a publish method to all publisher on that way:
+Add a publish method to all publisher
 
 -  *sensor_combined_Publisher.h*
 
@@ -177,6 +177,7 @@ Add a publish method to all publisher on that way:
       
       return 0;
    }
+
 
 -  In *sensor_combined_Subscriber.cxx* we can add some code to print some info on the screen, for example:
 
