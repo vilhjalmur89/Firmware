@@ -157,7 +157,11 @@ Add a publish method to all publisher
 
 .. code-block:: shell
 
+<<<<<<< 0129da0da8e2255455abe05b6896d33e7e60b9f5
     void sensor_combined_Publisher::publish(sensor_combined_* st)
+=======
+    void vehicle_status_Publisher::publish(vehicle_status_* st)
+>>>>>>> README fix
     {
       mp_publisher->write(st);
     }
