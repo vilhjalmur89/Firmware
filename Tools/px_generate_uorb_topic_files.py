@@ -174,6 +174,24 @@ def generate_uRTPS_general(filename_msgs, outputdir, templatedir, includepath, t
         return generate_by_template(output_file, template_file, merged_em_globals)
 
 
+
+
+def generate_topic_file(filename_msg, outputdir, templatedir, includepath, template_name):
+        """
+        Generates an .idl from .msg file
+        """
+        em_globals = get_em_globals(filename_msg, includepath)
+        spec_short_name = em_globals["spec"].short_name
+
+        # Make sure output directory exists:
+        if not os.path.isdir(outputdir):
+                os.makedirs(outputdir)
+
+        template_file = os.path.join(templatedir, template_name)
+        output_file = os.path.join(outputdir, spec_short_name + "_" + template_name.replace(".template", ""))
+
+        return generate_by_template(output_file, template_file, em_globals)
+
 def generate_uRTPS_general(filename_msgs, outputdir, templatedir, includepath, template_name):
         """
         Generates source file by UART msg content
